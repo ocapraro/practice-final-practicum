@@ -57,7 +57,7 @@ you. Feel free to write helper functions as needed.
   - As always, use proper encapsulation for all attributes.
   - A library is initialized with a name and is empty (it does not contain
     any books). You should choose the best data structure to store the books.
-  - An accessor for the name.
+  - Accessors for all attributes.
   - A method named "is_empty" that returns True if the library is empty (it
     does not have any books) and False otherwise.
   - A method named "reload" that declares a parameter for a collection of books
