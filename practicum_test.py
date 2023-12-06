@@ -191,3 +191,46 @@ def test_return_book():
   # analyze
   assert not library.is_empty()
   assert library.get_books()[0] == book
+
+# PART 4 TESTS
+def test_organize_library():
+  # setup
+  book1 = Book("Adventures of Huckleberry Finn", "Mark Twain", 1884)
+  book2 = Book("Iliad", "Homer", 1598)
+  book3 = Book("Fahrenheit 451", "Ray Bradbury", 1953)
+  book4 = Book("Dracula", "Bram Stoker", 1897)
+  book5 = Book("Animal Farm", "George Orwell", 1945)
+  books = [book1, book2, book3, book4, book5]
+  library = Library("Wallace Library")
+  library.reload(books)
+
+  # invoke
+  organize_library(library)
+  
+  # analyze
+  assert book4 == library.get_books()[0]
+  assert book5 == library.get_books()[1]
+  assert book2 == library.get_books()[2]
+  assert book1 == library.get_books()[3]
+  assert book3 == library.get_books()[4]
+
+def test_organize_library_duplicates():
+  # setup
+  book1 = Book("Animal Farm", "George Orwell", 1945)
+  book2 = Book("1984", "George Orwell", 1949)
+  book3 = Book("Fahrenheit 451", "Ray Bradbury", 1953)
+  book4 = Book("Adventures of Huckleberry Finn", "Mark Twain", 1884)
+  book5 = Book("Iliad", "Homer", 1598)
+  books = [book1, book2, book3, book4, book5]
+  library = Library("Wallace Library")
+  library.reload(books)
+
+  # invoke
+  organize_library(library)
+
+  # analyze
+  assert book2 == library.get_books()[0]
+  assert book1 == library.get_books()[1]
+  assert book5 == library.get_books()[2]
+  assert book4 == library.get_books()[3]
+  assert book3 == library.get_books()[4]
