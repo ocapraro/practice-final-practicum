@@ -1,0 +1,71 @@
+This practicum comprises 4 problems, worth equal each. You may choose
+to attempt the problems in any order, but the suggested order is listed below.
+
+The ONLY comment you are required to write in each module is a file comment 
+including your full name. You DO NOT need to write single-line comments or
+docstrings unless you want to.
+
+You are restricted to using ONLY features of the Python language that were 
+discussed in class lectures and in the homework assignments. If you use any 
+features that were not used in class or homework assignments you will receive a
+0 for the problem.
+
+Implement your solution in the "practicum.py" file that has been provided to 
+you. Feel free to write helper functions as needed.
+
+0. A pytest unit test that has been provided to you in a file named 
+   "practicum_test.py". You can use this test to verify that the functions you 
+   write to solve most of the problems on this exam are working as expected.
+   
+   If you open the file, you will see that the tests have been commented out.
+   This is so that you are not overwhelmed by syntax errors and failing tests
+   every time you run the unit test. You are encouraged to uncomment the tests
+   one-at-a-time as you work through the practicum. Once you get a test to pass,
+   move on to the next one.
+
+   Once you are done with the solutions, uncomment the test file so the grader can use pytest directly without extra efforts.
+
+
+1. For this problem you will be making a book. Every book has the following 
+   attributes:
+   - title: The title of the book.
+   - author: The name of the author.
+   - publication_year: The year the book was published.
+
+   Create a Python class to represent a book. It must include the 
+   following features:
+   - As always, use proper encapsulation for all attributes.
+   - A toy capsule is initialized with the title, author, and publication year.
+   - Accessors for all attributes.
+   - A compact string representation in the format "<title> by <author> 
+     (<publication year>)". For example, "1984 by George Orwell (1949)".
+   - A more detailed string representation in the format "<title>, a book 
+     by <author>, published in <publication year>." For example, "1984, a
+     book by George Orwell, published in 1949."
+
+2. These books will need to be sorted. For this exercise you will be sorting
+   them in alphabetical order based on the author’s name. In case of the same
+   author, the books should be sorted by title.
+
+3. Now using this book class you will be creating a library class to store
+   the books. Libraries have the following attributes:
+  - name i.e. the name of the library.
+  - books i.e. the collection of books that the library has.
+
+  Create a Python class that represents a library. It must include the
+  following features:
+  - As always, use proper encapsulation for all attributes.
+  - A library is initialized with a name and is empty (it does not contain
+    any books). You should choose the best data structure to store the books.
+  - An accessor for the name.
+  - A method named "is_empty" that returns True if the library is empty (it
+    does not have any books) and False otherwise.
+  - A method named "reload" that declares a parameter for a collection of books
+    and COPIES the books into the library. DO NOT use the data structure that is
+    passed into the method to store the books in the library!
+  - A method named "check_out" that takes a title and author and removes and returns
+    the book if it exists in the collection, or None if it doesn't. 
+  - A method named "return_book" that takes a book object and adds it to the collection.
+
+4. Define a function organize_library that takes a Library and sorts the
+   collection first by author and then by title, updating the Library collection.
