@@ -68,3 +68,126 @@ def test_sort_books_duplicates():
   assert book5 == copy[2]
   assert book4 == copy[3]
   assert book3 == copy[4]
+
+# PART 3 TESTS
+def test_create_library():
+  # setup
+  name = "Wallace Library"
+
+  # invoke
+  library = Library(name)
+
+  # analyze
+  assert library.get_name() == name
+  assert library.is_empty()
+
+def test_reload():
+  # setup
+  name = "Wallace Library"
+  books = [Book("1984", "George Orwell", 1949)]
+
+  # invoke
+  library = Library(name)
+  library.reload(books)
+
+  # analyze
+  assert not library.is_empty()
+
+def test_reload_copies():
+  # setup
+  name = "Wallace Library"
+  books = [Book("1984", "George Orwell", 1949)]
+
+  # invoke
+  library = Library(name)
+  library.reload(books)
+  books.pop()
+
+  # analyze
+  assert not library.is_empty()
+
+def test_check_out_1():
+  # setup
+  name = "Wallace Library"
+  title = "1984"
+  author = "George Orwell"
+  year = 1949
+  expected_book = Book(title, author, year)
+  books = [expected_book]
+
+  # invoke
+  library = Library(name)
+  library.reload(books)
+  actual_book = library.check_out(title, author)
+
+  # analyze
+  assert library.is_empty()
+  assert expected_book == actual_book
+
+def test_check_out_3():
+  # setup
+  name = "Wallace Library"
+  title = "1984"
+  author = "George Orwell"
+  year = 1949
+  expected_book = Book(title, author, year)
+  books = [Book("Fahrenheit 451", "Ray Bradbury", 1953), Book("Iliad", "Homer", 1598), expected_book]
+
+  # invoke
+  library = Library(name)
+  library.reload(books)
+  actual_book = library.check_out(title, author)
+
+  # analyze
+  assert len(library.get_books()) == 2
+  assert expected_book == actual_book
+
+def test_check_out_none():
+  # setup
+  name = "Wallace Library"
+  title = "1984"
+  author = "George Orwell"
+  year = 1949
+  expected = None
+  books = [Book("Fahrenheit 451", "Ray Bradbury", 1953)]
+
+  # invoke
+  library = Library(name)
+  library.reload(books)
+  actual = library.check_out(title, author)
+
+  # analyze
+  assert not library.is_empty()
+  assert expected == actual
+
+def test_check_out_none_empty():
+  # setup
+  name = "Wallace Library"
+  title = "1984"
+  author = "George Orwell"
+  year = 1949
+  expected = None
+
+  # invoke
+  library = Library(name)
+  actual = library.check_out(title, author)
+
+  # analyze
+  assert library.is_empty()
+  assert expected == actual
+
+def test_return_book():
+  # setup
+  name = "Wallace Library"
+  title = "1984"
+  author = "George Orwell"
+  year = 1949
+  book = Book(title, author, year)
+
+  # invoke
+  library = Library(name)
+  library.return_book(book)
+
+  # analyze
+  assert not library.is_empty()
+  assert library.get_books()[0] == book
