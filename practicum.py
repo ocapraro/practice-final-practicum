@@ -9,14 +9,13 @@ class Book:
 class Library:
   pass
 
+def organize_library(library:Library) -> None:
+   pass
+
 def main():
     """
     Use this function to manually test your code (if needed)
     """
-
-def organize_library(library:Library):
-   pass
-   
 
 if __name__ == "__main__":
     main()
