@@ -1,4 +1,4 @@
-This practicum comprises 4 problems, worth equal each. You may choose
+This practicum comprises 4 problems, worth equal points each. You may choose
 to attempt the problems in any order, but the suggested order is listed below.
 
 The ONLY comment you are required to write in each module is a file comment 
